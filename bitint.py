@@ -82,6 +82,9 @@ def bitint(typename, value_names):
     >>> x &= 1
     >>> x
     B('first')
+    >>> x ^= 1
+    >>> x
+    B()
 
     """
 
@@ -125,6 +128,9 @@ def bitint(typename, value_names):
     def __or__(self, value):
         return self.__class__(int.__or__(self, value))
 
+    def __xor__(self, value):
+        return self.__class__(int.__xor__(self, value))
+
     def __and__(self, value):
         return self.__class__(int.__and__(self, value))
 
@@ -152,6 +158,7 @@ def bitint(typename, value_names):
         '__str__': __str__,
         '__iter__': __iter__,
         '__or__': __or__,
+        '__xor__': __xor__,
         '__and__': __and__,
         '__invert__': __invert__,
         '__format__': __format__,

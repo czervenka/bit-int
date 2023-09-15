@@ -1,6 +1,6 @@
 [project]
 name = "bitint"
-version = "0.1.1"
+version = "0.1.4"
 description = "Pure Python implementation of extended integer with named bits."
 authors = [
     {name = "Robin Gottfried", email = "bitint@kebet.cz"},
