@@ -16,7 +16,7 @@ from python standard library.
 
 ## Installation
 
-    pip install 'git+https://github.com/czervenka/bit-set.git'
+    pip install bit-int
 
 or pipenv
 
