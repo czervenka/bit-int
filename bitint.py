@@ -1,17 +1,17 @@
 from functools import reduce
 
 
-def bitset(typename, value_names):
+def bitint(typename, value_names):
     """Represents set by named bits
 
     The left-most bit name is represented by first bit (value 1).
 
     (Inspired by namedtuple.)
 
-    bitset() creates a new type derived from int
-    >>> B = bitset('B', ['first', 'second', 'third'])
+    bitint() creates a new type derived from int
+    >>> B = bitint('B', ['first', 'second', 'third'])
 
-    The init args for bitset subclasses
+    The init args for bitint subclasses
     >>> x = B('first')
     >>> isinstance(x, int)
     True
@@ -41,20 +41,20 @@ def bitset(typename, value_names):
     >>> 'second' in x
     False
 
-    Standard binary operations can be used with BitSet
+    Standard binary operations can be used with BitInt
     >>> bool(0b10 & x)
     False
     >>> bool(0b01 & x)
     True
 
-    Finaly, BitSet can be initialized by an integer number as well
+    Finaly, BitInt can be initialized by an integer number as well
     >>> x = B(0b110)
     >>> B.first in x
     False
     >>> B.second in x
     True
 
-    BitSet is iterable returning names of set flags.
+    BitInt is iterable returning names of set flags.
     >>> list(x)
     ['second', 'third']
 
@@ -63,11 +63,11 @@ def bitset(typename, value_names):
     {'first': 1, 'second': 2, 'third': 4}
 
 
-    Finally string representation of BitSet is vinary field
+    Finally string representation of BitInt is vinary field
     >>> str(x)
     '110'
 
-    AND, OR and INVERSE bit operations returns BitSet object
+    AND, OR and INVERSE bit operations returns BitInt object
     >>> x | 1
     B('first', 'second', 'third')
     >>> x

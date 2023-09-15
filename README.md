@@ -1,4 +1,4 @@
-# bit-set
+# bit-int
 
 Pure Python implementation of extended integer with named bits.
 
@@ -6,11 +6,11 @@ I found that some Python engineers find working with bit math as sets
 unnatural. So I created this simple `int` extension to make bit manipulation
 more Pythonic and to demonstrate the beauty of Python magic.
 
-What is BitSet good for in real life? It's as efficient as Python's own `set`
+What is BitInt good for in real life? It's as efficient as Python's own `set`
 type but it can be easily stored in databases, JSON or shared with other
 languages without any modification (C, Go, Java, JavaScript).
 
-BitSet is highly inspired by great
+BitInt is highly inspired by great
 [namedtuple](https://docs.python.org/3/library/collections.html#collections.namedtuple)
 from python standard library.
 
@@ -20,16 +20,16 @@ from python standard library.
 
 or pipenv
 
-    pipenv install -e 'git+https://github.com/czervenka/bit-set.git#egg=bitset'
+    pipenv install -e 'git+https://github.com/czervenka/bit-set.git#egg=bitint'
 
 ## Usage
 
-    >>> from bitset import bitset
+    >>> from bitint import bitint
 
-BitSet is an integer type where bits can be named and manipulated as a set.
+BitInt is an integer type where bits can be named and manipulated as a set.
 Let's create a class Animals with first 8 bits named after animals kinds:
 
-    >>> Animals = bitset('Animals', 'cat, dog, mouse, bee, turtle, snake, frog, axolotl')
+    >>> Animals = bitint('Animals', 'cat, dog, mouse, bee, turtle, snake, frog, axolotl')
 
 In this case, animals are represented by bits where cat is the first bit
 (2^0=1), dog is the second (2^1=2), mouse the third (2^2=4). You don't need to
@@ -79,7 +79,7 @@ yet?
     AttributeError: type object 'Animals' has no attribute 'elefant'
 
 Beside checking for existense, it's possible to make basic set operations.  For
-example, we can create a new Animals bitset which includes all pets and
+example, we can create a new Animals bitint which includes all pets and
 amphibians:
 
     >>> pets | amphibians
@@ -108,7 +108,7 @@ Animals can be added or removed from all animals by `set` and `unset`
     Animals('cat', 'mouse', 'turtle', 'frog', 'axolotl')
 
 
-If you are curious which bits are set for named flags, print a bitset value.
+If you are curious which bits are set for named flags, print a bitint value.
 
     >>> print(amphibians)
     11000000
@@ -129,17 +129,17 @@ or for instance create regular Python set
     >>> set(pets) == {'cat', 'dog'}
     True
 
-Beside everything else BitSet is just an enhanced integer :)
+Beside everything else BitInt is just an enhanced integer :)
 
     >>> pets + 1
     4
     >>> import json
-    >>> json.dumps({"pets_bitset": pets})
-    '{"pets_bitset": 3}'
+    >>> json.dumps({"pets_bitint": pets})
+    '{"pets_bitint": 3}'
 
 
-**Tip:** If you change the named bits of a BitSet class (e.g. replace 'dog'
-with 'elephant') and you have stored bitsets you need to make a migration
+**Tip:** If you change the named bits of a BitInt class (e.g. replace 'dog'
+with 'elephant') and you have stored bitints you need to make a migration
 otherwise all dogs become elephants. If you want to avoid migrations, never
 change existing named bit and only add new at the end of definition to utilize
 unused bits.
@@ -156,5 +156,5 @@ unused bits.
 
 Tests are documentation and vice-versa:
 
-    python -m doctest bitset.py README.md
+    python -m doctest bitint.py README.md
 
